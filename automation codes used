@@ -1,0 +1,70 @@
+## Given a list of customer ratings from 1 to 10, how many are negative, neutral, and positive?
+
+def score_counter (score_list):
+    negative_scores = 0
+    neutral_scores = 0
+    positive_scores = 0
+    
+    for score in score_list:
+        if score >= 9:
+            positive_scores += 1
+        elif score >= 6:
+            neutral_scores += 1
+        else:
+            negative_scores += 1
+        
+    print('Negative:', negative_scores)
+    print('Neutral:', neutral_scores)
+    print('Positive:', positive_scores)
+
+## Testing the function
+import random
+random.seed(42)
+
+possible_scores = list(range(1,11))
+score_list1 = random.choices(possible_scores, weights=[8,8,8,8,8,3,3,4,20,30], k=10)
+score_list2 = random.choices(possible_scores, weights=[1,2,3,4,5,10,15,15,7,9], k=450)
+score_list3 = random.choices(possible_scores, weights=[1,2,3,4,4,5,5,10,15,25], k=10000)
+
+print('Test 1:')            
+score_counter(score_list1) 
+print('\nTest 2:')
+score_counter(score_list2)  
+print('\nTest 3:')
+score_counter(score_list3)  
+
+
+## How many of the feedback IDs are not from verified customers, and what percentage of the total feedback does that represent?
+
+def id_validator(verified_ids, feedback_ids):
+    unverified_feedback = 0
+    
+    for id in feedback_ids:
+        if id not in verified_ids:
+            unverified_feedback += 1 
+    percent_unverified = unverified_feedback / len(feedback_ids) * 100
+    print(unverified_feedback, 'of', len(feedback_ids), 'IDs unverified.')
+    print(str(round(percent_unverified, 2)) + '% unverified.')
+verified_ids = [str(i) for i in range(1,501)]
+feedback_ids = [str(i) for i in range(1,701)] 
+
+print("\manual Test 1:")
+id_validator(verified_ids, feedback_ids)
+
+
+## How many of the feedback IDs are not from verified customers, and what percentage of the total feedback does that represent?
+
+def id_validator(verified_ids, feedback_ids):
+    unverified_feedback = 0
+    
+    for id in feedback_ids:
+        if id not in verified_ids:
+            unverified_feedback += 1 
+    percent_unverified = unverified_feedback / len(feedback_ids) * 100
+    print(unverified_feedback, 'of', len(feedback_ids), 'IDs unverified.')
+    print(str(round(percent_unverified, 2)) + '% unverified.')
+verified_ids = [str(i) for i in range(1,501)]
+feedback_ids = [str(i) for i in range(1,701)] 
+
+print("\manual Test 1:")
+id_validator(verified_ids, feedback_ids)
